@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    command: sh -c "bundle exec rake db:create db:migrate && bundle exec puma -C config/puma.rb"
+    volumes:
+      - ".:/app"
+    ports:
+      - "3001:3000"
+    depends_on:
+      - redis
+    environment:
+      DATABASE_URL: sqlite3://localhost/db/development.sqlite3
+      REDIS_URL: redis://redis:6379/0
+      RAILS_ENV: development
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6380:6379"
