@@ -8,8 +8,6 @@ gem "sqlite3", "~> 1.4"
 gem "bootsnap", require: false
 gem 'grape'
 gem 'rspec-rails'
-gem 'vcr'
-gem 'webmock'
 gem 'rufus-scheduler'
 gem 'dotenv-rails'
 gem "redis", "~> 4.0"
